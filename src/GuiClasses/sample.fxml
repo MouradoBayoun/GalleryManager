@@ -46,12 +46,14 @@
                   <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TableView prefHeight="286.0" prefWidth="501.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowSpan="2">
+                  <TableView fx:id="artistTableView" prefHeight="286.0" prefWidth="501.0" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowSpan="2" >
                     <columns>
-                      <TableColumn prefWidth="151.0" text="Name" />
-                      <TableColumn prefWidth="236.0" text="Specializations" />
-                        <TableColumn minWidth="6.0" prefWidth="120.0" text="Price Range" />
-                        <TableColumn minWidth="1.0" prefWidth="71.0" text="isAlive" />
+                        <TableColumn fx:id="firstNameCol" prefWidth="85.0" text="First Name" />
+                        <TableColumn fx:id="lastNameCol" prefWidth="85.0" text="Last Name" />
+                        <TableColumn fx:id="specCol" prefWidth="220.0" text="Specializations" />
+                        <TableColumn fx:id="minPriceCol" minWidth="6.0" prefWidth="58.0" text="minPrice" />
+                        <TableColumn fx:id="maxPriceCol" minWidth="6.0" prefWidth="58.0" text="maxPrice" />
+                        <TableColumn fx:id="aliveCol" minWidth="1.0" prefWidth="71.0" text="isAlive" />
                     </columns>
                   </TableView>
                   <TextField fx:id="artistFirstNameID" prefHeight="25.0" prefWidth="109.0" promptText="First Name" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -91,8 +93,8 @@
                      </opaqueInsets></VBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="3.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
                      <children>
-                        <Button fx:id="addArtistButtonID" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Add" />
-                        <Button fx:id="deleteArtistButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Delete" />
+                        <Button fx:id="addArtistButtonID" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Add" onMouseClicked="#addBtnClicked"/>
+                        <Button fx:id="deleteArtistButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Delete" onMouseClicked="#deleteBtnClicked" />
                      </children>
                   </HBox>
                </children>

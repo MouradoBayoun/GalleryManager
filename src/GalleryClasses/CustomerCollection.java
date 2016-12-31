@@ -1,5 +1,8 @@
 package GalleryClasses;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,25 +11,23 @@ import java.util.List;
  * Created by Omar on 12/14/2016.
  */
 public class CustomerCollection {
-    private List<Customer> costumers;
-    public CustomerCollection(){
-        costumers = new LinkedList<Customer>();
-    }
-    public CustomerCollection(List<Customer> cs){
+    private ObservableList<Customer> costumers = FXCollections.observableArrayList();
+
+    public CustomerCollection(ObservableList<Customer> cs){
         costumers = cs;
     }
+
+    public CustomerCollection() {
+        costumers = FXCollections.observableArrayList();
+    }
+
     public void add(Customer Customer)
     {
         costumers.add(Customer);
     }
-    public void remove(int rId)
+    public void remove(Customer cust)
     {
-        for (Customer i:costumers) {
-            if(rId == i.getId()) {
-                costumers.remove(i);
-                break;
-            }
-        }
+        costumers.remove(cust);
     }
     public Customer getCustomer(String fn , String ln)
     {
@@ -39,7 +40,6 @@ public class CustomerCollection {
         //read the new information
         add(newOne);
         return newOne;
-
     }
     public void addNewArtistPreference(Artist artist,String fn , String ln )
     {

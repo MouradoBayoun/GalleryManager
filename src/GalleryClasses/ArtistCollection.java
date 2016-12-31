@@ -2,49 +2,59 @@ package GalleryClasses;
 
 import java.io.*;
 import java.util.*;
-import javafx.util.Pair;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Created by Omar on 12/14/2016.
  */
 public class ArtistCollection {
-    private List<Artist> artists;
 
-    public ArtistCollection() {
-        artists = new LinkedList<Artist>();
-    }
+    private ObservableList<Artist> artists = FXCollections.observableArrayList();
 
     public void add(Artist newArtist) {
         artists.add(newArtist);
     }
 
-    public void remove(int rId) {
-        for (Artist i : artists) {
-            if (rId == i.getId()) {
-                artists.remove(i);
-                break;
-            }
-        }
+    public ObservableList<Artist> getArtists() {
+        return artists;
+    }
+
+    public void remove(Artist ar) {
+        artists.remove(ar);
+//        for (Artist i : artists) {
+//            if (firstName.equals(i.getFirstName()) && lastName.equals(i.getLastName())) {
+//                artists.remove(i);
+//                break;
+//            }
+//        }
     }
 
     public Artist getArtist(Artist artist) {
         for (Artist i : artists) {
             if (artist.getId() == i.getId()) {
+
                 return i;
             }
         }
         return null;
     }
 
-    public void Edit(Item item, int cost) {
-        Artist artist = getArtist(item.getArtWork().getTheArtist());
-        if (cost > 0) {
-            Pair<Integer, Integer> theNew = new Pair<Integer, Integer>(cost, artist.getPriceRange().getValue());
-            artist.setPriceRange(theNew);
+    public void print() {
+        for (Artist i : artists)
+            i.print();
+    }
+
+    public void Edit(Inventory inventory, int cost) {
+        Artist artist = getArtist(inventory.getArtWork().getTheArtist());
+        if (cost > artist.getMaxPrice()) {
+            Integer newMax = cost;
+            artist.setMaxPrice(newMax);
         }
-        if (cost < 0) {
-            Pair<Integer, Integer> theNew = new Pair<Integer, Integer>(artist.getPriceRange().getKey(), cost);
-            artist.setPriceRange(theNew);
+        if (cost < artist.getMinPrice()) {
+            Integer newMin = cost;
+            artist.setMinPrice(newMin);
         }
 
     }
@@ -57,8 +67,8 @@ public class ArtistCollection {
             }
         }
             return aliveArtists;
-
     }
+
     public void writeArtistsOnFolder()
     {
       try{
