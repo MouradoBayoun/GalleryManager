@@ -12,6 +12,10 @@ import java.util.List;
 public class ArtWorkCollection {
     public ObservableList<ArtWork> artWorksList = FXCollections.observableArrayList();
 
+    public ObservableList<ArtWork> getArtWorksList() {
+        return artWorksList;
+    }
+
     public void add(ArtWork artWork)
     {
         artWorksList.add(artWork);
@@ -20,5 +24,14 @@ public class ArtWorkCollection {
     public void remove(ArtWork artWork)
     {
         artWorksList.remove(artWork);
+    }
+
+    public ArtWork findArtwork(String title){
+        for (ArtWork c:
+               artWorksList ) {
+            if(c.getTitle().equals(title))
+                return c;
+        }
+        return null;
     }
 }

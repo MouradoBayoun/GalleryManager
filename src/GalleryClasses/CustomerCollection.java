@@ -13,6 +13,10 @@ import java.util.List;
 public class CustomerCollection {
     private ObservableList<Customer> costumers = FXCollections.observableArrayList();
 
+    public ObservableList<Customer> getCostumers() {
+        return costumers;
+    }
+
     public CustomerCollection(ObservableList<Customer> cs){
         costumers = cs;
     }
@@ -139,5 +143,14 @@ public class CustomerCollection {
         }
 
         return true;
+    }
+
+    public Customer findCust(String firtName , String lastName){
+        for (Customer c:
+                costumers) {
+            if(c.getFirstName().equals(firtName) && c.getLastName().equals(lastName) )
+                return c;
+        }
+        return null;
     }
 }

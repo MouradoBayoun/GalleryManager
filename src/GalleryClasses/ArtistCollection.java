@@ -117,4 +117,13 @@ public class ArtistCollection {
         }
         return true;
     }
+
+    public Artist findArtist(String firtName , String lastName){
+        for (Artist c:
+                artists) {
+            if(c.getFirstName().equals(firtName) && c.getLastName().equals(lastName) )
+                return c;
+        }
+        return null;
+    }
 }

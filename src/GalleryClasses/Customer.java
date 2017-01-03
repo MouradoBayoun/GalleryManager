@@ -6,9 +6,9 @@ import java.util.*;
  */
 
  public class Customer implements Comparable<Customer> , Cloneable , Serializable{
-    private String firstName , lastName ;
+    private String firstName , lastName;
     private String phoneNumber ,address;
-    private List<Artist> artistPreferences ;
+    private List<Artist> artistPreferences;
     private List<ArtWork> artWorkPreferences;
     transient private static int ids = 0;
     private int id;
@@ -20,7 +20,7 @@ import java.util.*;
         artistPreferences = new LinkedList<>();
         artWorkPreferences= new LinkedList<>();
     }
-    public Customer(String fn, String ln ,String pN ,String add,List<Artist> aP , List<ArtWork> artP)
+    public Customer(String fn, String ln ,String pN ,String add ,List<Artist> aP , List<ArtWork> artP)
     {
         id = ++ids;
 
@@ -73,7 +73,7 @@ import java.util.*;
         return id;
     }
 
-    public void setFirstName(String firstName) {
+    public void setfirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -109,8 +109,19 @@ import java.util.*;
         this.artistPreferences = artistPreferences;
     }
 
-    public List<Artist> getArtistPreferences() {
+    public List<Artist> getArtistPreferencesList() {
         return artistPreferences;
+    }
+
+    public String getArtistPreferences(){
+        String tmp = "";
+        for (Artist i:
+            artistPreferences ) {
+            tmp += i.getFirstName() + " " + i.getLastName() + " ,";
+        }
+        if(tmp.length() > 1)
+            tmp = tmp.substring(0 , tmp.length() - 1);
+        return tmp;
     }
 
     public void setArtWorkPreferences(List<ArtWork> artWorkPreferences) {

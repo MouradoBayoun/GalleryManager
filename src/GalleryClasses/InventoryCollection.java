@@ -12,7 +12,8 @@ import java.util.List;
  * Created by Omar on 12/14/2016.
  */
 public class InventoryCollection {
-    public ObservableList<Inventory> listOfSoldedArtWork, listOfAvaliableArtWork;
+    public ObservableList<Inventory> listOfSoldedArtWork, listOfAvaliableArtWork ;
+    public ArtWorkCollection artwoksdata;
     public ArtistCollection artists;
     public  CustomerCollection customers;
 
@@ -22,6 +23,7 @@ public class InventoryCollection {
         listOfSoldedArtWork = FXCollections.observableArrayList();
         artists = new ArtistCollection();
         customers = new CustomerCollection();
+        artwoksdata = new ArtWorkCollection();
     }
 
     public void printAvailable(){
